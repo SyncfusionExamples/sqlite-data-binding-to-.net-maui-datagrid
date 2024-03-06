@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:local="clr-namespace:DataGridMAUI"
+             x:Class="DataGridMAUI.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:DealerInfoViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <syncfusion:SfDataGrid x:Name="dataGrid"                                
+                                NavigationMode="Cell"                               
+                                GridLinesVisibility="Both" 
+                                SelectionMode="Single"                               
+                                HeaderGridLinesVisibility="Both">
+                <syncfusion:SfDataGrid.Behaviors>
+                    <local:SfDataGridBehavior/>
+                </syncfusion:SfDataGrid.Behaviors>
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:DataGridImageColumn MappingName="DealerImage"
+                                            HeaderText="Dealer Image" />
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+            <ImageButton Margin="20" CornerRadius="20" HeightRequest="40" WidthRequest="40"  Background="{StaticResource Primary}"
+                                     VerticalOptions="End" HorizontalOptions="End"
+                                    Command="{Binding CreateDealerInfoCommand}" Source="add.png"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
